@@ -88,12 +88,12 @@ describe "password validations" do
 
     it "should return nil on email password mismatch" do
       wrong_password_user = User.authenticate(@attr[:email], "incorrect")
-      wrong_password_user.should_be nil
+      wrong_password_user.should be_nil
     end
 
     it "should return nil for an e-mail address w/ no user" do
       does_not_exist_user = User.authenticate("foo@bar.com", "blahbiddyblah")
-      does_not_exist_user.should_be nil
+      does_not_exist_user.should be_nil
     end
 
     it "should return the user on successful login" do
