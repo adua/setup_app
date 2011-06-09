@@ -24,9 +24,23 @@ describe UsersController do
       response.should be_success
   end
 
-    it "should have the right title" do
+  it "should have the right title" do
       get 'new'
-        response.should have_selector("title", :content => "Sign Up")
-    end
+      response.should have_selector("title", :content => "Sign Up")
+  end
+
+      describe "Get 'show'" do
+
+        it "should have the right title" do
+          get :show, :id => @user
+          response.should have_selector("title", :content => @user.name)
+        end
+
+        it "should have a gravatar image" do
+          get :show, :id => @user
+          response.should have_selector("h1>img", :class => "gravatar")
+        end
+     end
   end
 end
+
